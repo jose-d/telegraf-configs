@@ -1,17 +1,20 @@
 #!/usr/bin/python
 
-import threading
+import os
 import subprocess
-import json
+import sys
+import threading
 
+mmpmon_path = '/usr/lpp/mmfs/bin/mmpmon'
 
-mmpmon='/usr/lpp/mmfs/bin/mmpmon'
-arguments='-i /usr/local/monitoring/gpfs_stats_collector/commandFile'
 
 # --
-# classes etc
+# classes
 
 class Command:
+
+    # good old class I use to execute commands in OS shell.
+
     def __init__(self, cmd):
         self.cmd = cmd
         self.process = None
@@ -34,59 +37,72 @@ class Command:
             thread.join()
             self.rc = 999
 
-        return (self.rc, self.stdout, self.stderr)
+        return self.rc, self.stdout, self.stderr
+
+
+# --
+# functions
+
 
 def dump_data(data):
-  site_prefix = str("gpfs,cluster=" + str(data['cluster']) + ",filesystem=" + str(data['filesystem']))
-  
-  metrics = ["disks","bytes_read","bytes_written","opens","closes","reads","writes","readdir","inode_updates"]
-  for metric in metrics:
-    print str(site_prefix)+" " + str(metric) + "=" + str(data[metric])
+    site_prefix = str("gpfs,cluster=" + str(data['cluster']) + ",filesystem=" + str(data['filesystem']))
+    for metric in metrics:
+        print(str(site_prefix) + " " + str(metric) + "=" + str(data[metric]))
 
 
-# lookup table:
+# --
+# metric config
+
+metrics = ["disks", "bytes_read", "bytes_written", "opens", "closes", "reads", "writes", "readdir", "inode_updates"]
+
 nvdict = {}
 
-nvdict['cluster:']='cluster'
-nvdict['filesystem:']='filesystem'
-nvdict['disks:']='disks'
-nvdict['bytes read:']='bytes_read'
-nvdict['bytes written:']='bytes_written'
-nvdict['opens:']='opens'
-nvdict['closes:']='closes'
-nvdict['reads:']='reads'
-nvdict['writes:']='writes'
-nvdict['readdir:']='readdir'
-nvdict['inode updates:']='inode_updates'
+nvdict['cluster:'] = 'cluster'
+nvdict['filesystem:'] = 'filesystem'
+nvdict['disks:'] = 'disks'
+nvdict['bytes read:'] = 'bytes_read'
+nvdict['bytes written:'] = 'bytes_written'
+nvdict['opens:'] = 'opens'
+nvdict['closes:'] = 'closes'
+nvdict['reads:'] = 'reads'
+nvdict['writes:'] = 'writes'
+nvdict['readdir:'] = 'readdir'
+nvdict['inode updates:'] = 'inode_updates'
+
+# --
+# main
 
 if __name__ == "__main__":
 
-    cmd = Command(str(mmpmon)+' '+str(arguments))
-    rc,stdout,stderr = cmd.run(5)
+    script_path = os.path.dirname(os.path.realpath(__file__))
+    arguments = '-i ' + str(script_path) + '/commandFile'
+    cmd_string = str(mmpmon_path) + ' ' + str(arguments)
+
+    cmd = Command(cmd_string)
+
+    rc, stdout, stderr = cmd.run(5)
 
     if rc != 0:
-        print('Something went wrong when calling ' + str(mmpmon)+' '+str(arguments))
+        print('Something went wrong when calling ' + str(mmpmon_path) + ' ' + str(arguments))
         sys.exit(1)
 
-    everything=[]
+    everything = []
 
     for line in stdout.splitlines():
-	if "mmpmon node" in str(line):
+        if "mmpmon node" in str(line):
             if 'data' in locals():
                 dump_data(data)
-            data={}
+            data = {}
             node_name = str(line).split()[4]
-            data['name']=node_name
-            data['measurement']='gpfs'
+            data['name'] = node_name
+            data['measurement'] = 'gpfs'
 
         if "timestamp:" in str(line):
-            data['timestamp']=str(line).split(':')[1].strip().split('/')[0]
+            data['timestamp'] = str(line).split(':')[1].strip().split('/')[0]
 
         for metric in nvdict:
             if metric in str(line):
-                data[nvdict[metric]]=str(line).split(':')[1].strip()
+                data[nvdict[metric]] = str(line).split(':')[1].strip()
 
-    if 'data' in locals(): dump_data(data)
-
-
-
+    if 'data' in locals():
+        dump_data(data)
