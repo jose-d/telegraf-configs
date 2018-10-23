@@ -86,8 +86,6 @@ if __name__ == "__main__":
         print('Something went wrong when calling ' + str(mmpmon_path) + ' ' + str(arguments))
         sys.exit(1)
 
-    everything = []
-
     for line in stdout.splitlines():
         if "mmpmon node" in str(line):
             if 'data' in locals():
