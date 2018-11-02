@@ -1,5 +1,24 @@
 # telegraf-collectors
 
+## mathmon
+
+Calls ```monitorlm``` binary[(link to Wolfram/Mathematica docu)](https://reference.wolfram.com/language/tutorial/MonitoringMathLM.html) to collect usage of Wolfram Mathematica licences.
+
+### Configuration
+
+Snippet for ```telegraf.conf```:
+
+```
+[[inputs.exec]]
+   commands = [
+     "/usr/local/sw/monitors/mathmon/give_stats.py"
+   ]
+   timeout = "5s"
+   data_format = "influx"
+```
+
+* ```monitorlm_path``` - should point to your monitorlm binary, e.g. ```monitorlm_path= "/usr/local/sw/monitors/mathmon/monitorlm"```
+* ```license_server``` - should contain IP or hostname of your Mathematica license server, e.g. ```license_server="192.0.2.1"```
 
 
 ## gpfs_stats_collector
@@ -15,7 +34,6 @@ Snippet for ```telegraf.conf```:
   command = "/usr/bin/sudo /usr/local/monitoring/gpfs_stats_collector/give_stats.py"
   timeout = "5s"
   data_format = "influx"
- 
 ```
 
 Needs also sudo rights, because GPFS.., so 
