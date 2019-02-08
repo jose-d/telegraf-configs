@@ -2,7 +2,7 @@
 
 ## ibmon
 
-Parses output of ```perfquery``` (provided by ```infiniband-diags``` RPM).
+Parses output of ```perfquery``` (provided by ```infiniband-diags``` RPM, [(manpage)](https://linux.die.net/man/8/perfquery)).
 
 ### Configuration
 
