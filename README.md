@@ -1,8 +1,10 @@
 # telegraf-collectors
 
-* [Cpufreq-monitor](https://github.com/jose-d/telegraf-collectors/blob/master/README.md#cpufreq-monitor)
-* [Mathmon](https://github.com/jose-d/telegraf-collectors/blob/master/README.md#mathmon)
-* [gpfs_stats_collector](https://github.com/jose-d/telegraf-collectors/blob/master/README.md#gpfs_stats_collector)
+Here are some custom collectors for Telegraf (https://www.influxdata.com/time-series-platform/telegraf), usually related to HPC environment..
+
+* [Cpufreq-monitor](https://github.com/jose-d/telegraf-collectors/blob/master/README.md#cpufreq-monitor) - collects frequency of CPU cores
+* [Mathmon](https://github.com/jose-d/telegraf-collectors/blob/master/README.md#mathmon) - collects usage stats of Mathematica licenses
+* [gpfs_stats_collector](https://github.com/jose-d/telegraf-collectors/blob/master/README.md#gpfs_stats_collector) - collects GPFS filesystem stats
 
 ## Cpufreq-monitor
 
