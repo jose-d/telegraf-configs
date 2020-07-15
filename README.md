@@ -14,6 +14,11 @@ https://github.com/jose-d/telegraf-collectors/raw/master/.docu/Screenshot_2020-0
 
 Calls ```monitorlm``` binary[(link to Wolfram/Mathematica docu)](https://reference.wolfram.com/language/tutorial/MonitoringMathLM.html) to collect usage of Wolfram Mathematica licences.
 
+### Mathmon data in Grafana
+
+![Grafana visualisation of Mathmon data](
+https://github.com/jose-d/telegraf-collectors/raw/master/.docu/Screenshot_2020-07-15%20Mathematica%20license%20usage%20-%20Grafana.png)
+
 ### mathmon configuration
 
 Snippet for ```telegraf.conf```:
