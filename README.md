@@ -1,5 +1,11 @@
 # telegraf-collectors
 
+## cpufreq-monitor
+
+Parses /sys/devices/system/cpu/cpuXX/cpufreq/scaling_cur_freq . Manual customization script is needed to define NUMA node topology (aka cpu-ID vs socket-ID relations).
+
+
+
 ## ibmon
 
 Parses output of ```perfquery``` (provided by ```infiniband-diags``` RPM, [(manpage)](https://linux.die.net/man/8/perfquery)).
