@@ -4,6 +4,11 @@
 
 Parses `/sys/devices/system/cpu/cpuXX/cpufreq/scaling_cur_freq` . Manual customization of script is needed to define NUMA node topology (aka cpu-ID vs socket-ID relations).
 
+![Grafana visualization of cpufreq-monitor data](
+https://github.com/jose-d/telegraf-collectors/raw/master/.docu/Screenshot_2020-07-15%20node%20details%20-%20Grafana.png)
+
+
+
 
 ## mathmon
 
