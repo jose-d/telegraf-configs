@@ -2,35 +2,7 @@
 
 ## cpufreq-monitor
 
-Parses /sys/devices/system/cpu/cpuXX/cpufreq/scaling_cur_freq . Manual customization script is needed to define NUMA node topology (aka cpu-ID vs socket-ID relations).
-
-
-
-## ibmon
-
-Parses output of ```perfquery``` (provided by ```infiniband-diags``` RPM, [(manpage)](https://linux.die.net/man/8/perfquery)).
-
-### Configuration
-
-Snippet for ```telegraf.conf```
-
-```
-[[inputs.exec]]
-   commands = [
-     "/usr/local/sw/monitors/ibmon/give_stats.py"
-   ]
-   timeout = "5s"
-   data_format = "influx"
-```
-
-Snippet for ```sudoers.d/monitoring```
-
-```
-telegraf ALL=NOPASSWD:  /usr/sbin/perfquery *
-```
-
-* ```perfquery_path= "/usr/sbin/perfquery"``` - should point to perfquery binary
-
+Parses `/sys/devices/system/cpu/cpuXX/cpufreq/scaling_cur_freq` . Manual customization of script is needed to define NUMA node topology (aka cpu-ID vs socket-ID relations).
 
 
 ## mathmon
@@ -77,3 +49,9 @@ Needs also sudo rights, because GPFS.., so
 should be included in ```/etc/sudoers.d/monitoring```.
 
 Check ```mmpmon_path``` variable if really points to your **mmpmon** binary.
+
+## Deprecated
+
+### ibmon
+
+Monitoring of Infiniband is now implemented in upstream Telegraf.
