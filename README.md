@@ -1,5 +1,11 @@
 # telegraf-collectors
 
+Here are some custom collectors for Telegraf (https://www.influxdata.com/time-series-platform/telegraf), usually related to HPC environment..
+
+* [Cpufreq-monitor](https://github.com/jose-d/telegraf-collectors/blob/master/README.md#cpufreq-monitor) - collects frequency of CPU cores
+* [Mathmon](https://github.com/jose-d/telegraf-collectors/blob/master/README.md#mathmon) - collects usage stats of Mathematica licenses
+* [gpfs_stats_collector](https://github.com/jose-d/telegraf-collectors/blob/master/README.md#gpfs_stats_collector) - collects GPFS filesystem stats
+
 ## Cpufreq-monitor
 
 Parses `/sys/devices/system/cpu/cpuXX/cpufreq/scaling_cur_freq` . Manual customization of script is needed to define NUMA node topology (aka cpu-ID vs socket-ID relations).
@@ -13,6 +19,11 @@ https://github.com/jose-d/telegraf-collectors/raw/master/.docu/Screenshot_2020-0
 ## Mathmon
 
 Calls ```monitorlm``` binary[(link to Wolfram/Mathematica docu)](https://reference.wolfram.com/language/tutorial/MonitoringMathLM.html) to collect usage of Wolfram Mathematica licences.
+
+### Mathmon data in Grafana
+
+![Grafana visualisation of Mathmon data](
+https://github.com/jose-d/telegraf-collectors/raw/master/.docu/Screenshot_2020-07-15%20Mathematica%20license%20usage%20-%20Grafana.png)
 
 ### mathmon configuration
 
