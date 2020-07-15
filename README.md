@@ -1,5 +1,9 @@
 # telegraf-collectors
 
+* Cpufreq-monitor
+* Mathmon
+* gpfs_stats_collector
+
 ## Cpufreq-monitor
 
 Parses `/sys/devices/system/cpu/cpuXX/cpufreq/scaling_cur_freq` . Manual customization of script is needed to define NUMA node topology (aka cpu-ID vs socket-ID relations).
