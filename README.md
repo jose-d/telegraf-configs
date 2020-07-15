@@ -1,8 +1,8 @@
 # telegraf-collectors
 
-* Cpufreq-monitor
-* Mathmon
-* gpfs_stats_collector
+* [Cpufreq-monitor](https://github.com/jose-d/telegraf-collectors/blob/master/README.md#cpufreq-monitor)
+* [Mathmon](https://github.com/jose-d/telegraf-collectors/blob/master/README.md#mathmon)
+* [gpfs_stats_collector](https://github.com/jose-d/telegraf-collectors/blob/master/README.md#gpfs_stats_collector)
 
 ## Cpufreq-monitor
 
