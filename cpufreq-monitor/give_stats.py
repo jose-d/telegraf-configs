@@ -39,8 +39,10 @@ if __name__ == "__main__":
 
         if str(cpu_n) in node_0_cpus:
             socket = "0"
-        if str(cpu_n) in node_1_cpus:
+        elif str(cpu_n) in node_1_cpus:
             socket = "1"
+        else:
+            continue
 
         scaling_cur_freq_file_path = os.path.normpath(
             "{base_path}/{cpu_path}/cpufreq/scaling_cur_freq".format(base_path=base_path, cpu_path=cpuid))
