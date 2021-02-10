@@ -5,11 +5,6 @@ import os
 
 BASE_PATH = "/sys/devices/system/cpu"
 
-
-def byteArrayToString(bytearray) -> str:
-    return str(bytearray.decode('utf8')).strip()
-
-
 def readScalingCurFreqFromCpu(i:int):
     """returns current core frequency in Hz as Grafana knows Hz"""
     cpu_id = f"cpu{i}"
