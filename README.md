@@ -6,6 +6,12 @@ Here are some custom collectors for Telegraf (https://www.influxdata.com/time-se
 * [Mathmon](https://github.com/jose-d/telegraf-collectors/blob/master/README.md#mathmon) - collects usage stats of Mathematica licenses
 * [gpfs_stats_collector](https://github.com/jose-d/telegraf-collectors/blob/master/README.md#gpfs_stats_collector) - collects GPFS filesystem stats
 
+
+### ibmon
+
+I revived this script as Infiniband monitoring is broken for Mellanox, Intel ethernet and RHEL-ish-8 OS - https://github.com/influxdata/telegraf/issues/8135. Script parses content of `/sys/class/infiniband`, matches mlx5 devices and pushes data using line protocol.
+
+
 ## Cpufreq-monitor
 
 Parses `/sys/devices/system/cpu/cpuXX/cpufreq/scaling_cur_freq` . Manual customization of script is needed to define NUMA node topology (aka cpu-ID vs socket-ID relations).
@@ -65,9 +71,3 @@ Needs also sudo rights, because GPFS.., so
 should be included in ```/etc/sudoers.d/monitoring```.
 
 Check ```mmpmon_path``` variable if really points to your **mmpmon** binary.
-
-## Deprecated
-
-### ibmon
-
-Monitoring of Infiniband is now implemented in upstream Telegraf.
