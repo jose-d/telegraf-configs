@@ -5,11 +5,14 @@ Here are some custom collectors for Telegraf (https://www.influxdata.com/time-se
 * [Cpufreq-monitor](https://github.com/jose-d/telegraf-collectors/blob/master/README.md#cpufreq-monitor) - collects frequency of CPU cores
 * [Mathmon](https://github.com/jose-d/telegraf-collectors/blob/master/README.md#mathmon) - collects usage stats of Mathematica licenses
 * [gpfs_stats_collector](https://github.com/jose-d/telegraf-collectors/blob/master/README.md#gpfs_stats_collector) - collects GPFS filesystem stats
+* ibmon - gathers state and counter values for Mellanox Infifiniband devices.
 
 
 ### ibmon
 
-I revived this script as Infiniband monitoring is broken for Mellanox, Intel ethernet and RHEL-ish-8 OS - https://github.com/influxdata/telegraf/issues/8135. Script parses content of `/sys/class/infiniband`, matches mlx5 devices and pushes data using line protocol.
+I revived this script as built-in Infiniband monitoring in Telegraf is broken for Mellanox, Intel ethernet and RHEL-ish-8 OS - https://github.com/influxdata/telegraf/issues/8135. Script parses content of `/sys/class/infiniband`, matches mlx5 devices and pushes data using influx line protocol.
+
+![Grafana visualization of ibmon data](https://github.com/jose-d/telegraf-collectors/blob/master/.docu/Screenshot_2021-02-12%20node%20details%20-%20Grafana.png)
 
 
 ## Cpufreq-monitor
