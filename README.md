@@ -17,8 +17,7 @@ I revived this script as built-in Infiniband monitoring in Telegraf is broken fo
 
 ## Cpufreq-monitor
 
-Parses `/sys/devices/system/cpu/cpuXX/cpufreq/scaling_cur_freq` . Manual customization of script is needed to define NUMA node topology (aka cpu-ID vs socket-ID relations).
-
+Parses `/sys/devices/system/cpu/cpuXX/cpufreq/scaling_cur_freq` .
 
 ### Cpufreq-monitor data in Grafana
 
