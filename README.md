@@ -1,6 +1,6 @@
 # telegraf-collectors
 
-Here are some custom telegraf configs tailored to use in HPC environment.
+Here are some custom telegraf configs, mostly related to HPC / scientific computing environment.
 
 ## slurm-cgroupsv2
 
