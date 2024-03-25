@@ -6,4 +6,4 @@ Here are some custom telegraf configs tailored to use in HPC environment.
 
 Parses cgroup v2 data at slurm compute node.
 
-https://github.com/jose-d/telegraf-configs/blob/master/slurm-cgroupsv2/
+[telegraf-configs/blob/master/slurm-cgroupsv2/](/slurm-cgroupsv2/)
