@@ -1,0 +1,20 @@
+[Unit]
+Description=Telegraf systemd unit file allowing one to run telegraf in multi-instance mode
+Documentation=https://github.com/influxdata/telegraf
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=notify
+EnvironmentFile=-/etc/default/telegraf
+User=telegraf
+#Instead using /etc/telegraf, instances are using /etc/telegraf/telegraf/instances.d as root dir
+ExecStart=/usr/bin/telegraf --config /etc/telegraf/instances.d/%i/telegraf.conf --config-directory /etc/telegraf/instances.d/%i $TELEGRAF_OPTS
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartForceExitStatus=SIGPIPE
+KillMode=control-group
+LimitMEMLOCK=196000
+
+[Install]
+WantedBy=multi-user.target
