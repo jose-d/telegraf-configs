@@ -9,7 +9,7 @@ Type=notify
 EnvironmentFile=-/etc/default/telegraf
 User=telegraf
 #Instead using /etc/telegraf, instances are using /etc/telegraf/telegraf/instances.d as root dir
-ExecStart=/usr/bin/telegraf --config /etc/telegraf/instances.d/%i/telegraf.conf --config-directory /etc/telegraf/instances.d/%i $TELEGRAF_OPTS
+ExecStart=/usr/bin/telegraf --config /etc/telegraf/instances.d/%i/telegraf.conf --config-directory /etc/telegraf/instances.d/%i/telegraf.d/ $TELEGRAF_OPTS
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-failure
 RestartForceExitStatus=SIGPIPE
