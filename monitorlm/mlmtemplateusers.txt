@@ -1,0 +1,7 @@
+%VAR_MPROCESS = "FE" "KE" "SFE" "SKE"
+%VAR_TOTAL_CHECKEDOUT_HEADER = "license_slot; program; user; user_uid; client_host; client_host_IP; client_host_domain; client_host_FQDN; session_duration; "
+%REP_GENERAL_CHECKOUT_LINE = "%PROC_SLOTNUM; %VAR_MPROCESS; %PROC_USER; %PROC_UID; %PROC_HOST; %PROC_IP; %PROC_DOMAIN; %PROC_FQDN; %PROC_DURATION  \n"
+%TEXT
+#Time/Date : [%CONST_DATE_T2] [%CONST_DATE_M3 %CONST_DATE_D, %CONST_DATE_Y2]
+%VAR_TOTAL_CHECKEDOUT_HEADER
+%REP_GENERAL_CHECKOUT_LINE
